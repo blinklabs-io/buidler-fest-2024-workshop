@@ -22,3 +22,9 @@ go.work
 
 # Program binary
 /workshop
+
+# Local config
+/.env
+
+# Seed file
+/seed.txt
