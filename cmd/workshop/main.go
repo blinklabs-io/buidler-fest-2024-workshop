@@ -16,7 +16,11 @@ package main
 
 import (
 	"fmt"
+	"log/slog"
 	"os"
+
+	"github.com/blinklabs-io/buidler-fest-2024-workshop/internal/config"
+	"github.com/blinklabs-io/buidler-fest-2024-workshop/internal/wallet"
 
 	"github.com/spf13/cobra"
 )
@@ -28,7 +32,9 @@ const (
 func main() {
 	cmd := &cobra.Command{
 		Use: programName,
-		Run: workshopRun,
+		// Throw an error if any args are provided
+		Args: cobra.ExactArgs(0),
+		Run:  workshopRun,
 	}
 
 	if err := cmd.Execute(); err != nil {
@@ -38,5 +44,26 @@ func main() {
 }
 
 func workshopRun(cmd *cobra.Command, args []string) {
-	fmt.Println("hello!")
+	// Configure logger
+	logger := slog.New(slog.NewTextHandler(os.Stderr, nil))
+	slog.SetDefault(logger)
+	// Load config
+	_, err := config.Load()
+	if err != nil {
+		slog.Error(
+			fmt.Sprintf("failed to load config: %s", err),
+		)
+		os.Exit(1)
+	}
+	// Setup wallet
+	w, err := wallet.Setup()
+	if err != nil {
+		slog.Error(
+			fmt.Sprintf("failed to configure wallet: %s", err),
+		)
+		os.Exit(1)
+	}
+	slog.Info(
+		fmt.Sprintf("loaded mnemonic for address: %s", w.PaymentAddress),
+	)
 }
