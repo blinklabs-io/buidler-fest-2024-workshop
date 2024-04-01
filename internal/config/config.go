@@ -23,6 +23,7 @@ import (
 
 type Config struct {
 	Indexer IndexerConfig
+	Kupo    KupoConfig
 	Wallet  WalletConfig
 	Network string `envconfig:"NETWORK"`
 }
@@ -30,6 +31,10 @@ type Config struct {
 type IndexerConfig struct {
 	Address    string `envconfig:"INDEXER_TCP_ADDRESS"`
 	SocketPath string `envconfig:"INDEXER_SOCKET_PATH"`
+}
+
+type KupoConfig struct {
+	Endpoint string `envconfig:"KUPO_ENDPOINT"`
 }
 
 type WalletConfig struct {

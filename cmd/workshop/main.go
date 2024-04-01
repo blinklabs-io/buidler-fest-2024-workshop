@@ -20,6 +20,7 @@ import (
 	"os"
 
 	"github.com/blinklabs-io/buidler-fest-2024-workshop/internal/config"
+	"github.com/blinklabs-io/buidler-fest-2024-workshop/internal/indexer"
 	"github.com/blinklabs-io/buidler-fest-2024-workshop/internal/wallet"
 
 	"github.com/spf13/cobra"
@@ -48,7 +49,7 @@ func workshopRun(cmd *cobra.Command, args []string) {
 	logger := slog.New(slog.NewTextHandler(os.Stderr, nil))
 	slog.SetDefault(logger)
 	// Load config
-	_, err := config.Load()
+	cfg, err := config.Load()
 	if err != nil {
 		slog.Error(
 			fmt.Sprintf("failed to load config: %s", err),
@@ -66,4 +67,16 @@ func workshopRun(cmd *cobra.Command, args []string) {
 	slog.Info(
 		fmt.Sprintf("loaded mnemonic for address: %s", w.PaymentAddress),
 	)
+	// Start indexer
+	slog.Info(
+		fmt.Sprintf("starting indexer on network %s", cfg.Network),
+	)
+	if err := indexer.GetIndexer().Start(); err != nil {
+		slog.Error(
+			fmt.Sprintf("failed to start indexer: %s", err),
+		)
+		os.Exit(1)
+	}
+	// Wait forever
+	select {}
 }
