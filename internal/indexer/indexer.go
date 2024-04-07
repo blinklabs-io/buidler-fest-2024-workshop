@@ -15,15 +15,14 @@
 package indexer
 
 import (
-	"context"
 	"fmt"
 	"log/slog"
 	"os"
 
 	"github.com/blinklabs-io/buidler-fest-2024-workshop/internal/config"
+	"github.com/blinklabs-io/buidler-fest-2024-workshop/internal/txbuilder"
 	"github.com/blinklabs-io/buidler-fest-2024-workshop/internal/wallet"
 
-	"github.com/SundaeSwap-finance/kugo"
 	"github.com/blinklabs-io/snek/event"
 	filter_chainsync "github.com/blinklabs-io/snek/filter/chainsync"
 	filter_event "github.com/blinklabs-io/snek/filter/event"
@@ -72,11 +71,15 @@ func (i *Indexer) Start() error {
 		filter_event.WithTypes([]string{"chainsync.transaction"}),
 	)
 	i.pipeline.AddFilter(filterEvent)
-	// We only care about transactions on our wallet address
+	// We only care about transactions on our wallet address and the reward address
+	filterAddresses := []string{
+		w.PaymentAddress,
+	}
+	if cfg.Reward.RewardAddress != "" {
+		filterAddresses = append(filterAddresses, cfg.Reward.RewardAddress)
+	}
 	filterChainsync := filter_chainsync.New(
-		filter_chainsync.WithAddresses(
-			[]string{w.PaymentAddress},
-		),
+		filter_chainsync.WithAddresses(filterAddresses),
 	)
 	i.pipeline.AddFilter(filterChainsync)
 	// Configure pipeline output
@@ -102,58 +105,12 @@ func (i *Indexer) Start() error {
 }
 
 func (i *Indexer) handleEvent(evt event.Event) error {
-	cfg := config.GetConfig()
-	w := wallet.GetWallet()
-	eventTx := evt.Payload.(input_chainsync.TransactionEvent)
-	eventCtx := evt.Context.(input_chainsync.TransactionContext)
-	// Query kupo (if configured) for TX input to get source wallet address
-	// NOTE: this assumes only 1 input
-	var inputAddr string = "(unknown)"
-	if cfg.Kupo.Endpoint != "" {
-		for _, txInput := range eventTx.Inputs {
-			k := kugo.New(
-				kugo.WithEndpoint(cfg.Kupo.Endpoint),
-			)
-			matches, err := k.Matches(
-				context.Background(),
-				kugo.Pattern(
-					fmt.Sprintf(
-						"%d@%s",
-						txInput.Index(),
-						txInput.Id().String(),
-					),
-				),
-			)
-			if err != nil {
-				return err
-			}
-			if len(matches) == 0 {
-				slog.Warn(
-					fmt.Sprintf(
-						"could not lookup TX input ref %d@%s in kupo (wrong network?)",
-						txInput.Index(),
-						txInput.Id().String(),
-					),
-				)
-				continue
-			}
-			inputAddr = matches[0].Address
-			break
-		}
+	// Build transaction
+	if err := txbuilder.HandleEvent(evt); err != nil {
+		slog.Warn(
+			fmt.Sprintf("Failed to build TX: %s", err),
+		)
 	}
-	for _, txOutput := range eventTx.Outputs {
-		if txOutput.Address().String() == w.PaymentAddress {
-			slog.Info(
-				fmt.Sprintf(
-					"received TX %s: %s -> %s",
-					eventCtx.TransactionHash,
-					inputAddr,
-					txOutput.Address().String(),
-				),
-			)
-		}
-	}
-	// TODO: add TX build logic
 	return nil
 }
 

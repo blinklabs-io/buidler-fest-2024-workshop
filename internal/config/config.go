@@ -22,10 +22,11 @@ import (
 )
 
 type Config struct {
-	Indexer IndexerConfig
-	Kupo    KupoConfig
-	Wallet  WalletConfig
-	Network string `envconfig:"NETWORK"`
+	Indexer   IndexerConfig
+	Reward    RewardConfig
+	TxBuilder TxBuilderConfig
+	Wallet    WalletConfig
+	Network   string `envconfig:"NETWORK"`
 }
 
 type IndexerConfig struct {
@@ -33,8 +34,16 @@ type IndexerConfig struct {
 	SocketPath string `envconfig:"INDEXER_SOCKET_PATH"`
 }
 
-type KupoConfig struct {
-	Endpoint string `envconfig:"KUPO_ENDPOINT"`
+type RewardConfig struct {
+	MinLovelace   uint64 `envconfig:"MIN_LOVELACE"`
+	RewardAddress string `envconfig:"REWARD_ADDRESS"`
+	RewardAmount  uint64 `envconfig:"REWARD_AMOUNT"`
+	SourceAddress string `envconfig:"SOURCE_ADDRESS"`
+}
+
+type TxBuilderConfig struct {
+	BlockfrostApiKey string `envconfig:"BLOCKFROST_API_KEY"`
+	KupoUrl          string `envconfig:"KUPO_URL"`
 }
 
 type WalletConfig struct {
@@ -44,6 +53,9 @@ type WalletConfig struct {
 // Singleton config instance with default values
 var globalConfig = &Config{
 	Network: "preprod",
+	Reward: RewardConfig{
+		MinLovelace: 50_000_000, // 50 (t)ADA
+	},
 }
 
 func Load() (*Config, error) {
