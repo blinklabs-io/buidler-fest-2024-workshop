@@ -22,6 +22,7 @@ import (
 
 	"github.com/SundaeSwap-finance/kugo"
 	"github.com/blinklabs-io/buidler-fest-2024-workshop/internal/config"
+	"github.com/blinklabs-io/buidler-fest-2024-workshop/internal/txsubmit"
 	"github.com/blinklabs-io/buidler-fest-2024-workshop/internal/wallet"
 
 	"github.com/Salvionied/apollo"
@@ -119,14 +120,20 @@ func HandleEvent(evt event.Event) error {
 	if err != nil {
 		return err
 	}
+	// Submit TX
+	txBytes, err := tx.Bytes()
+	if err != nil {
+		return err
+	}
+	if err := txsubmit.SubmitTx(txBytes); err != nil {
+		return err
+	}
 	slog.Info(
 		fmt.Sprintf(
-			"built transaction %x",
+			"submitted transaction %x",
 			tx.Id().Payload,
 		),
 	)
-	// TODO: submit TX
-
 	return nil
 }
 
