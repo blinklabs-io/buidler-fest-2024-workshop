@@ -24,6 +24,7 @@ import (
 type Config struct {
 	Indexer   IndexerConfig
 	Reward    RewardConfig
+	Submit    SubmitConfig
 	TxBuilder TxBuilderConfig
 	Wallet    WalletConfig
 	Network   string `envconfig:"NETWORK"`
@@ -41,6 +42,12 @@ type RewardConfig struct {
 	SourceAddress string `envconfig:"SOURCE_ADDRESS"`
 }
 
+type SubmitConfig struct {
+	Address    string `envconfig:"SUBMIT_TCP_ADDRESS"`
+	SocketPath string `envconfig:"SUBMIT_SOCKET_PATH"`
+	Url        string `envconfig:"SUBMIT_URL"`
+}
+
 type TxBuilderConfig struct {
 	BlockfrostApiKey string `envconfig:"BLOCKFROST_API_KEY"`
 	KupoUrl          string `envconfig:"KUPO_URL"`
@@ -54,7 +61,8 @@ type WalletConfig struct {
 var globalConfig = &Config{
 	Network: "preprod",
 	Reward: RewardConfig{
-		MinLovelace: 50_000_000, // 50 (t)ADA
+		MinLovelace:  50_000_000, // 50 (t)ADA
+		RewardAmount: 5_000_000,  // 5 (t)ADA
 	},
 }
 
