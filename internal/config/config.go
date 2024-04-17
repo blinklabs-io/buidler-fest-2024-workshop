@@ -15,7 +15,9 @@
 package config
 
 import (
+	"errors"
 	"fmt"
+	"io/fs"
 
 	"github.com/joho/godotenv"
 	"github.com/kelseyhightower/envconfig"
@@ -68,13 +70,14 @@ var globalConfig = &Config{
 
 func Load() (*Config, error) {
 	// Load any .env file
-	if err := godotenv.Load(); err != nil {
+	err := godotenv.Load()
+	if err != nil && !errors.Is(err, fs.ErrNotExist) {
 		return nil, err
 	}
 	// Load config values from environment variables
 	// We use "dummy" as the app name here to (mostly) prevent picking up env
 	// vars that we hadn't explicitly specified in annotations above
-	err := envconfig.Process("dummy", globalConfig)
+	err = envconfig.Process("dummy", globalConfig)
 	if err != nil {
 		return nil, fmt.Errorf("error processing environment: %s", err)
 	}
