@@ -5,7 +5,7 @@ go 1.21
 require (
 	github.com/Salvionied/apollo v1.0.11
 	github.com/SundaeSwap-finance/kugo v0.1.5
-	github.com/blinklabs-io/bursa v0.7.1
+	github.com/blinklabs-io/bursa v0.7.2
 	github.com/blinklabs-io/gouroboros v0.78.0
 	github.com/blinklabs-io/snek v0.17.4
 	github.com/joho/godotenv v1.5.1
@@ -33,7 +33,7 @@ require (
 	go.uber.org/zap v1.27.0 // indirect
 	golang.org/x/crypto v0.21.0 // indirect
 	golang.org/x/exp v0.0.0-20230522175609-2e198f4a06a1 // indirect
-	golang.org/x/sync v0.6.0 // indirect
+	golang.org/x/sync v0.7.0 // indirect
 	golang.org/x/sys v0.18.0 // indirect
 	golang.org/x/text v0.14.0 // indirect
 	google.golang.org/protobuf v1.33.0 // indirect
