@@ -23,12 +23,12 @@ import (
 	"github.com/blinklabs-io/buidler-fest-2024-workshop/internal/txbuilder"
 	"github.com/blinklabs-io/buidler-fest-2024-workshop/internal/wallet"
 
-	"github.com/blinklabs-io/snek/event"
-	filter_chainsync "github.com/blinklabs-io/snek/filter/chainsync"
-	filter_event "github.com/blinklabs-io/snek/filter/event"
-	input_chainsync "github.com/blinklabs-io/snek/input/chainsync"
-	output_embedded "github.com/blinklabs-io/snek/output/embedded"
-	"github.com/blinklabs-io/snek/pipeline"
+	"github.com/blinklabs-io/adder/event"
+	filter_chainsync "github.com/blinklabs-io/adder/filter/chainsync"
+	filter_event "github.com/blinklabs-io/adder/filter/event"
+	input_chainsync "github.com/blinklabs-io/adder/input/chainsync"
+	output_embedded "github.com/blinklabs-io/adder/output/embedded"
+	"github.com/blinklabs-io/adder/pipeline"
 )
 
 type Indexer struct {
