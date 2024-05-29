@@ -39,8 +39,8 @@ import (
 	"github.com/Salvionied/apollo/serialization/UTxO"
 	"github.com/Salvionied/apollo/serialization/Value"
 	"github.com/Salvionied/apollo/txBuilding/Backend/BlockFrostChainContext"
-	"github.com/blinklabs-io/snek/event"
-	input_chainsync "github.com/blinklabs-io/snek/input/chainsync"
+	"github.com/blinklabs-io/adder/event"
+	input_chainsync "github.com/blinklabs-io/adder/input/chainsync"
 )
 
 func HandleEvent(evt event.Event) error {
