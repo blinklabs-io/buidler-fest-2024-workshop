@@ -5,7 +5,7 @@ go 1.21
 require (
 	github.com/Salvionied/apollo v1.0.11
 	github.com/SundaeSwap-finance/kugo v0.1.5
-	github.com/blinklabs-io/adder v0.21.0
+	github.com/blinklabs-io/adder v0.22.0
 	github.com/blinklabs-io/bursa v0.7.2
 	github.com/blinklabs-io/gouroboros v0.85.0
 	github.com/joho/godotenv v1.5.1
