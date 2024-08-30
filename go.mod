@@ -6,7 +6,7 @@ require (
 	github.com/Salvionied/apollo v1.0.12
 	github.com/SundaeSwap-finance/kugo v0.1.5
 	github.com/blinklabs-io/adder v0.23.1
-	github.com/blinklabs-io/bursa v0.8.1
+	github.com/blinklabs-io/bursa v0.8.2
 	github.com/blinklabs-io/gouroboros v0.93.0
 	github.com/joho/godotenv v1.5.1
 	github.com/kelseyhightower/envconfig v1.4.0
@@ -37,7 +37,7 @@ require (
 	golang.org/x/crypto v0.26.0 // indirect
 	golang.org/x/exp v0.0.0-20240404231335-c0f41cb1a7a0 // indirect
 	golang.org/x/sync v0.8.0 // indirect
-	golang.org/x/sys v0.23.0 // indirect
+	golang.org/x/sys v0.24.0 // indirect
 	golang.org/x/text v0.17.0 // indirect
 	google.golang.org/protobuf v1.34.2 // indirect
 	gopkg.in/yaml.v2 v2.4.0 // indirect
