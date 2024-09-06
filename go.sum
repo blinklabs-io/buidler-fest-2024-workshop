@@ -11,8 +11,8 @@ github.com/SundaeSwap-finance/ogmigo v0.8.0/go.mod h1:Zuywifig7DQb5sEBrXsE44tv7f
 github.com/aead/siphash v1.0.1/go.mod h1:Nywa3cDsYNNK3gaciGTWPwHt0wlpNV15vwmswBAUSII=
 github.com/aws/aws-sdk-go v1.44.197 h1:pkg/NZsov9v/CawQWy+qWVzJMIZRQypCtYjUBXFomF8=
 github.com/aws/aws-sdk-go v1.44.197/go.mod h1:aVsgQcEevwlmQ7qHE9I3h+dtQgpqhFB+i8Phjh7fkwI=
-github.com/blinklabs-io/adder v0.23.1 h1:LVrZGyq4X/0U6nQ/qR4MbK1xWfiL4wlcqcm7LnLA0qs=
-github.com/blinklabs-io/adder v0.23.1/go.mod h1:7kh992fiQJaaFhYaASe31NwjZ9fqY/FUJjkS6SiPpAs=
+github.com/blinklabs-io/adder v0.23.2 h1:mA2VpsvoBru2yIjBv3bJULZ+Atw7AGvp1JDYpS/EyRQ=
+github.com/blinklabs-io/adder v0.23.2/go.mod h1:dfO19rhSp4ZZL15++wMxwWojbpqd8bawVZyOtoYr2K4=
 github.com/blinklabs-io/bursa v0.8.2 h1:f4ofPhTCW/Kev5lMrHRqf37s91NrUeVrpPvL4+JWqxE=
 github.com/blinklabs-io/bursa v0.8.2/go.mod h1:gwpOJC25ASg+xL5lF8nHGMA0Aqv3vt41tGUDiruFjew=
 github.com/blinklabs-io/gouroboros v0.93.2 h1:Rtm6FucK/F4/x1tjMg0ur8Xqbm6VpLInL8JtEsNoAwY=
