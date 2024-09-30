@@ -7,7 +7,7 @@ require (
 	github.com/SundaeSwap-finance/kugo v0.1.5
 	github.com/blinklabs-io/adder v0.23.4
 	github.com/blinklabs-io/bursa v0.8.2
-	github.com/blinklabs-io/gouroboros v0.94.3
+	github.com/blinklabs-io/gouroboros v0.96.0
 	github.com/joho/godotenv v1.5.1
 	github.com/kelseyhightower/envconfig v1.4.0
 	github.com/spf13/cobra v1.8.1
