@@ -45,11 +45,15 @@ func SubmitTx(txBytes []byte) error {
 		return submitTxApi(txBytes)
 	} else {
 		// Populate address info from indexer network
-		network := ouroboros.NetworkByName(cfg.Network)
-		if network == ouroboros.NetworkInvalid {
+		network, ok := ouroboros.NetworkByName(cfg.Network)
+		if !ok {
 			return fmt.Errorf("unknown network: %s", cfg.Network)
 		}
-		cfg.Submit.Address = fmt.Sprintf("%s:%d", network.PublicRootAddress, network.PublicRootPort)
+		if len(network.BootstrapPeers) == 0 {
+			return fmt.Errorf("no upstream configured for %s", cfg.Network)
+		}
+		peer := network.BootstrapPeers[0]
+		cfg.Submit.Address = fmt.Sprintf("%s:%d", peer.Address, peer.Port)
 		return submitTxNtN(txBytes)
 	}
 }
@@ -90,11 +94,13 @@ func submitTxNtN(txBytes []byte) error {
 			panic(fmt.Errorf("async: %s", err))
 		}
 	}()
+	network, ok := ouroboros.NetworkByName(cfg.Network)
+	if !ok {
+		return fmt.Errorf("cannot get network: %s", cfg.Network)
+	}
 	oConn, err := ouroboros.New(
 		ouroboros.WithConnection(conn),
-		ouroboros.WithNetwork(
-			ouroboros.NetworkByName(cfg.Network),
-		),
+		ouroboros.WithNetwork(network),
 		ouroboros.WithErrorChan(errorChan),
 		ouroboros.WithNodeToNode(true),
 		ouroboros.WithKeepAlive(true),

@@ -284,18 +284,25 @@ func getUtxoByRef(txId string, idx int) (*UTxO.UTxO, error) {
 func kupoMatchToApolloUtxo(match kugo.Match) UTxO.UTxO {
 	serAddr, _ := serAddress.DecodeAddress(match.Address)
 	txIdBytes, _ := hex.DecodeString(match.TransactionID)
-	assets := make(MultiAsset.MultiAsset[int64])
-	for assetId, assetAmount := range match.Value.Assets {
-		tmpPolicyId := Policy.PolicyId{Value: assetId.PolicyID()}
-		tmpAssetName := AssetName.NewAssetNameFromString(assetId.AssetName())
-		if _, ok := assets[tmpPolicyId]; !ok {
-			assets[tmpPolicyId] = Asset.Asset[int64]{}
+	multiAssets := make(MultiAsset.MultiAsset[int64])
+	totalLovelace := uint64(0)
+	for policyId, assets := range match.Value {
+		for assetId, assetAmount := range assets {
+			if policyId == "ada" && assetId == "lovelace" {
+				totalLovelace = assetAmount.Uint64()
+				continue
+			}
+			tmpPolicyId := Policy.PolicyId{Value: policyId}
+			tmpAssetName := AssetName.NewAssetNameFromString(assetId)
+			if _, ok := multiAssets[tmpPolicyId]; !ok {
+				multiAssets[tmpPolicyId] = Asset.Asset[int64]{}
+			}
+			multiAssets[tmpPolicyId][tmpAssetName] = assetAmount.Int64()
 		}
-		assets[tmpPolicyId][tmpAssetName] = assetAmount.Int64()
 	}
 	val := Value.SimpleValue(
-		match.Value.Coins.Int64(),
-		assets,
+		int64(totalLovelace),
+		multiAssets,
 	)
 	ret := UTxO.UTxO{
 		Input: TransactionInput.TransactionInput{
