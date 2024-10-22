@@ -4,10 +4,10 @@ go 1.21
 
 require (
 	github.com/Salvionied/apollo v1.0.12
-	github.com/SundaeSwap-finance/kugo v0.1.5
-	github.com/blinklabs-io/adder v0.23.4
+	github.com/SundaeSwap-finance/kugo v1.0.5
+	github.com/blinklabs-io/adder v0.24.3
 	github.com/blinklabs-io/bursa v0.8.2
-	github.com/blinklabs-io/gouroboros v0.99.0
+	github.com/blinklabs-io/gouroboros v0.101.0
 	github.com/joho/godotenv v1.5.1
 	github.com/kelseyhightower/envconfig v1.4.0
 	github.com/spf13/cobra v1.8.1
@@ -16,13 +16,13 @@ require (
 require (
 	filippo.io/edwards25519 v1.1.0 // indirect
 	github.com/Salvionied/cbor/v2 v2.6.0 // indirect
-	github.com/SundaeSwap-finance/ogmigo v0.8.0 // indirect
-	github.com/aws/aws-sdk-go v1.44.197 // indirect
+	github.com/SundaeSwap-finance/ogmigo/v6 v6.0.0-20231128043329-e8ced51013a1 // indirect
+	github.com/aws/aws-sdk-go v1.48.7 // indirect
 	github.com/btcsuite/btcutil v1.0.2 // indirect
 	github.com/buger/jsonparser v1.1.1 // indirect
 	github.com/fivebinaries/go-cardano-serialization v0.0.0-20220907134105-ec9b85086588 // indirect
 	github.com/fxamacker/cbor/v2 v2.7.0 // indirect
-	github.com/gorilla/websocket v1.5.0 // indirect
+	github.com/gorilla/websocket v1.5.1 // indirect
 	github.com/inconshreveable/mousetrap v1.1.0 // indirect
 	github.com/jinzhu/copier v0.4.0 // indirect
 	github.com/jmespath/go-jmespath v0.4.0 // indirect
@@ -30,15 +30,14 @@ require (
 	github.com/maestro-org/go-sdk v1.1.3 // indirect
 	github.com/spf13/pflag v1.0.5 // indirect
 	github.com/tyler-smith/go-bip39 v1.1.0 // indirect
-	github.com/utxorpc/go-codegen v0.10.0 // indirect
+	github.com/utxorpc/go-codegen v0.11.0 // indirect
 	github.com/x448/float16 v0.8.4 // indirect
-	go.uber.org/multierr v1.11.0 // indirect
-	go.uber.org/zap v1.27.0 // indirect
-	golang.org/x/crypto v0.27.0 // indirect
+	golang.org/x/crypto v0.28.0 // indirect
 	golang.org/x/exp v0.0.0-20240404231335-c0f41cb1a7a0 // indirect
+	golang.org/x/net v0.28.0 // indirect
 	golang.org/x/sync v0.8.0 // indirect
-	golang.org/x/sys v0.25.0 // indirect
-	golang.org/x/text v0.18.0 // indirect
-	google.golang.org/protobuf v1.34.2 // indirect
+	golang.org/x/sys v0.26.0 // indirect
+	golang.org/x/text v0.19.0 // indirect
+	google.golang.org/protobuf v1.35.1 // indirect
 	gopkg.in/yaml.v2 v2.4.0 // indirect
 )
