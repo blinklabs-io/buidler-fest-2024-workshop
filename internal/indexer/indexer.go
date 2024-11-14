@@ -41,6 +41,10 @@ var globalIndexer = &Indexer{}
 func (i *Indexer) Start() error {
 	cfg := config.GetConfig()
 	w := wallet.GetWallet()
+	if w == nil {
+		slog.Error("failed to load wallet")
+		return fmt.Errorf("failed to load wallet")
+	}
 	// Create pipeline
 	i.pipeline = pipeline.New()
 	// Configure pipeline input
