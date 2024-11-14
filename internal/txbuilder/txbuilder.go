@@ -46,6 +46,10 @@ import (
 func HandleEvent(evt event.Event) error {
 	cfg := config.GetConfig()
 	w := wallet.GetWallet()
+	if w == nil {
+		slog.Error("failed to load wallet")
+		return fmt.Errorf("failed to load wallet")
+	}
 	eventTx := evt.Payload.(input_chainsync.TransactionEvent)
 	eventCtx := evt.Context.(input_chainsync.TransactionContext)
 	// Determine source address from TX inputs
