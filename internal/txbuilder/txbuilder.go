@@ -144,6 +144,9 @@ func HandleEvent(evt event.Event) error {
 func BuildRewardTx() (*Transaction.Transaction, error) {
 	cfg := config.GetConfig()
 	w := wallet.GetWallet()
+	if w == nil {
+		return nil, fmt.Errorf("cannot initialize wallet")
+	}
 	cc := apollo.NewEmptyBackend()
 	apollob := apollo.New(&cc)
 	apollob = apollob.
