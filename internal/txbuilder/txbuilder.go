@@ -89,7 +89,8 @@ func HandleEvent(evt event.Event) error {
 	var totalOutputAmount uint64
 	for _, txOutput := range eventTx.Outputs {
 		txOutAddr := txOutput.Address().String()
-		if txOutAddr == w.PaymentAddress || txOutAddr == cfg.Reward.RewardAddress {
+		if txOutAddr == w.PaymentAddress ||
+			txOutAddr == cfg.Reward.RewardAddress {
 			slog.Info(
 				fmt.Sprintf(
 					"received TX %s: %s -> %s (%d lovelace)",
@@ -116,7 +117,9 @@ func HandleEvent(evt event.Event) error {
 	}
 	// Skip further processing if transaction output amount is below the reward threshold
 	if totalOutputAmount < cfg.Reward.MinLovelace {
-		slog.Warn("skipping further processing: total output amount is below reward minimum")
+		slog.Warn(
+			"skipping further processing: total output amount is below reward minimum",
+		)
 		return nil
 	}
 	// Build reward transaction
