@@ -68,7 +68,10 @@ func submitTxNtN(txBytes []byte) error {
 	// Determine transaction type (era)
 	txType, err := ledger.DetermineTransactionType(txBytes)
 	if err != nil {
-		return fmt.Errorf("could not parse transaction to determine type: %s", err)
+		return fmt.Errorf(
+			"could not parse transaction to determine type: %s",
+			err,
+		)
 	}
 	tx, err := ledger.NewTransactionFromCbor(txType, txBytes)
 	if err != nil {
