@@ -4,10 +4,10 @@ go 1.22.11
 
 require (
 	github.com/Salvionied/apollo v1.0.12
-	github.com/SundaeSwap-finance/kugo v1.0.6-0.20250116035512-6686234216f0
-	github.com/blinklabs-io/adder v0.25.4
+	github.com/SundaeSwap-finance/kugo v1.1.0
+	github.com/blinklabs-io/adder v0.26.0
 	github.com/blinklabs-io/bursa v0.8.3
-	github.com/blinklabs-io/gouroboros v0.108.0
+	github.com/blinklabs-io/gouroboros v0.108.2
 	github.com/joho/godotenv v1.5.1
 	github.com/kelseyhightower/envconfig v1.4.0
 	github.com/spf13/cobra v1.8.1
@@ -16,8 +16,9 @@ require (
 require (
 	filippo.io/edwards25519 v1.1.0 // indirect
 	github.com/Salvionied/cbor/v2 v2.6.0 // indirect
-	github.com/SundaeSwap-finance/ogmigo v0.8.2-0.20250113211512-19cbb328b538 // indirect
-	github.com/aws/aws-sdk-go v1.55.5 // indirect
+	github.com/SundaeSwap-finance/ogmigo v0.9.0 // indirect
+	github.com/aws/aws-sdk-go v1.55.6 // indirect
+	github.com/btcsuite/btcd/btcutil v1.1.6 // indirect
 	github.com/btcsuite/btcutil v1.0.2 // indirect
 	github.com/buger/jsonparser v1.1.1 // indirect
 	github.com/fivebinaries/go-cardano-serialization v0.0.0-20220907134105-ec9b85086588 // indirect
@@ -30,13 +31,13 @@ require (
 	github.com/maestro-org/go-sdk v1.1.3 // indirect
 	github.com/spf13/pflag v1.0.5 // indirect
 	github.com/tyler-smith/go-bip39 v1.1.0 // indirect
-	github.com/utxorpc/go-codegen v0.15.0 // indirect
+	github.com/utxorpc/go-codegen v0.16.0 // indirect
 	github.com/x448/float16 v0.8.4 // indirect
 	golang.org/x/crypto v0.32.0 // indirect
 	golang.org/x/exp v0.0.0-20240404231335-c0f41cb1a7a0 // indirect
 	golang.org/x/sync v0.10.0 // indirect
 	golang.org/x/sys v0.29.0 // indirect
 	golang.org/x/text v0.21.0 // indirect
-	google.golang.org/protobuf v1.36.1 // indirect
+	google.golang.org/protobuf v1.36.3 // indirect
 	gopkg.in/yaml.v2 v2.4.0 // indirect
 )
