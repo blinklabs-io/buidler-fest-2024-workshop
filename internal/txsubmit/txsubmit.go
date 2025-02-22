@@ -1,4 +1,4 @@
-// Copyright 2024 Blink Labs Software
+// Copyright 2025 Blink Labs Software
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -203,10 +203,10 @@ func handleRequestTxIds(
 	ret := []txsubmission.TxIdAndSize{
 		{
 			TxId: txsubmission.TxId{
-				EraId: uint16(ntnTxType),
+				EraId: uint16(ntnTxType), // #nosec G115
 				TxId:  ntnTxHash,
 			},
-			Size: uint32(len(ntnTxBytes)),
+			Size: uint32(len(ntnTxBytes)), // #nosec G115
 		},
 	}
 	return ret, nil
@@ -218,7 +218,7 @@ func handleRequestTxs(
 ) ([]txsubmission.TxBody, error) {
 	ret := []txsubmission.TxBody{
 		{
-			EraId:  uint16(ntnTxType),
+			EraId:  uint16(ntnTxType), // #nosec G115
 			TxBody: ntnTxBytes,
 		},
 	}
