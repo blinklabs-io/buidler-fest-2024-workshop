@@ -1,4 +1,4 @@
-// Copyright 2024 Blink Labs Software
+// Copyright 2025 Blink Labs Software
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -164,7 +164,8 @@ func BuildRewardTx() (*Transaction.Transaction, error) {
 
 	apollob = apollob.
 		PayToAddressBech32(
-			cfg.Reward.RewardAddress, int(cfg.Reward.RewardAmount),
+			cfg.Reward.RewardAddress,
+			int(cfg.Reward.RewardAmount),  // #nosec G115
 		)
 	tx, err := apollob.Complete()
 	if err != nil {
@@ -311,7 +312,8 @@ func kupoMatchToApolloUtxo(match kugo.Match) UTxO.UTxO {
 		}
 	}
 	val := Value.SimpleValue(
-		int64(totalLovelace),
+		// all the lovelace wouldn't overflow this
+		int64(totalLovelace), // #nosec G115
 		multiAssets,
 	)
 	ret := UTxO.UTxO{
