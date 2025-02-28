@@ -16,6 +16,7 @@ package txsubmit
 
 import (
 	"bytes"
+	"context"
 	"encoding/hex"
 	"fmt"
 	"io"
@@ -139,8 +140,14 @@ func submitTxNtC(txBytes []byte) error {
 
 func submitTxApi(txBytes []byte) error {
 	cfg := config.GetConfig()
+	ctx := context.Background()
 	reqBody := bytes.NewBuffer(txBytes)
-	req, err := http.NewRequest(http.MethodPost, cfg.Submit.Url, reqBody)
+	req, err := http.NewRequestWithContext(
+		ctx,
+		http.MethodPost,
+		cfg.Submit.Url,
+		reqBody,
+	)
 	if err != nil {
 		return fmt.Errorf("failed to create request: %s", err)
 	}
