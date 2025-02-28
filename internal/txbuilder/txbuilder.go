@@ -17,6 +17,7 @@ package txbuilder
 import (
 	"context"
 	"encoding/hex"
+	"errors"
 	"fmt"
 	"log/slog"
 
@@ -48,7 +49,7 @@ func HandleEvent(evt event.Event) error {
 	w := wallet.GetWallet()
 	if w == nil {
 		slog.Error("failed to load wallet")
-		return fmt.Errorf("failed to load wallet")
+		return errors.New("failed to load wallet")
 	}
 	eventTx := evt.Payload.(input_chainsync.TransactionEvent)
 	eventCtx := evt.Context.(input_chainsync.TransactionContext)
@@ -148,7 +149,7 @@ func BuildRewardTx() (*Transaction.Transaction, error) {
 	cfg := config.GetConfig()
 	w := wallet.GetWallet()
 	if w == nil {
-		return nil, fmt.Errorf("cannot initialize wallet")
+		return nil, errors.New("cannot initialize wallet")
 	}
 	cc := apollo.NewEmptyBackend()
 	apollob := apollo.New(&cc)
@@ -165,7 +166,7 @@ func BuildRewardTx() (*Transaction.Transaction, error) {
 	apollob = apollob.
 		PayToAddressBech32(
 			cfg.Reward.RewardAddress,
-			int(cfg.Reward.RewardAmount),  // #nosec G115
+			int(cfg.Reward.RewardAmount), // #nosec G115
 		)
 	tx, err := apollob.Complete()
 	if err != nil {
@@ -250,7 +251,7 @@ func getUtxosByAddress(addr string) ([]UTxO.UTxO, error) {
 		}
 		return ret, nil
 	}
-	return nil, fmt.Errorf("no valid Blockfrost or Kupo/Ogmios config found")
+	return nil, errors.New("no valid Blockfrost or Kupo/Ogmios config found")
 }
 
 func getUtxoByRef(txId string, idx int) (*UTxO.UTxO, error) {
@@ -289,7 +290,7 @@ func getUtxoByRef(txId string, idx int) (*UTxO.UTxO, error) {
 		ret := kupoMatchToApolloUtxo(matches[0])
 		return &ret, nil
 	}
-	return nil, fmt.Errorf("no valid Blockfrost or Kupo/Ogmios config found")
+	return nil, errors.New("no valid Blockfrost or Kupo/Ogmios config found")
 }
 
 func kupoMatchToApolloUtxo(match kugo.Match) UTxO.UTxO {

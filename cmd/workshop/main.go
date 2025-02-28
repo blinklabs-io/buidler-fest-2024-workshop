@@ -65,11 +65,11 @@ func workshopRun(cmd *cobra.Command, args []string) {
 		os.Exit(1)
 	}
 	slog.Info(
-		fmt.Sprintf("loaded mnemonic for address: %s", w.PaymentAddress),
+		"loaded mnemonic for address: " + w.PaymentAddress,
 	)
 	// Start indexer
 	slog.Info(
-		fmt.Sprintf("starting indexer on network %s", cfg.Network),
+		"starting indexer on network " + cfg.Network,
 	)
 	if err := indexer.GetIndexer().Start(); err != nil {
 		slog.Error(
