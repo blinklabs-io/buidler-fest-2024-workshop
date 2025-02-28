@@ -1,4 +1,4 @@
-// Copyright 2024 Blink Labs Software
+// Copyright 2025 Blink Labs Software
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -15,6 +15,7 @@
 package indexer
 
 import (
+	"errors"
 	"fmt"
 	"log/slog"
 	"os"
@@ -43,7 +44,7 @@ func (i *Indexer) Start() error {
 	w := wallet.GetWallet()
 	if w == nil {
 		slog.Error("failed to load wallet")
-		return fmt.Errorf("failed to load wallet")
+		return errors.New("failed to load wallet")
 	}
 	// Create pipeline
 	i.pipeline = pipeline.New()
