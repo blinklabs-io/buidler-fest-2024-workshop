@@ -195,7 +195,7 @@ func handleRequestTxIds(
 	req uint16,
 ) ([]txsubmission.TxIdAndSize, error) {
 	if ntnSentTx {
-		// Terrible syncronization hack for shutdown
+		// Terrible synchronization hack for shutdown
 		close(ntnDoneChan)
 		time.Sleep(5 * time.Second)
 		return nil, nil
