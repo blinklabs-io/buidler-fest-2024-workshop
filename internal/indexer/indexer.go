@@ -94,7 +94,7 @@ func (i *Indexer) Start() error {
 	i.pipeline.AddOutput(output)
 	// Start pipeline
 	if err := i.pipeline.Start(); err != nil {
-		return fmt.Errorf("failed to start pipeline: %s", err)
+		return fmt.Errorf("failed to start pipeline: %w", err)
 	}
 	// Start error handler
 	go func() {
