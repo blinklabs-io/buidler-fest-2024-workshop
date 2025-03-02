@@ -70,17 +70,17 @@ func submitTxNtN(txBytes []byte) error {
 	txType, err := ledger.DetermineTransactionType(txBytes)
 	if err != nil {
 		return fmt.Errorf(
-			"could not parse transaction to determine type: %s",
+			"could not parse transaction to determine type: %w",
 			err,
 		)
 	}
 	tx, err := ledger.NewTransactionFromCbor(txType, txBytes)
 	if err != nil {
-		return fmt.Errorf("failed to parse transaction CBOR: %s", err)
+		return fmt.Errorf("failed to parse transaction CBOR: %w", err)
 	}
 	txHashHex, err := hex.DecodeString(tx.Hash())
 	if err != nil {
-		return fmt.Errorf("failed to decode TX hash: %s", err)
+		return fmt.Errorf("failed to decode TX hash: %w", err)
 	}
 	ntnTxHash = [32]byte(txHashHex)
 	ntnTxType = txType
@@ -95,7 +95,7 @@ func submitTxNtN(txBytes []byte) error {
 	go func() {
 		err, ok := <-errorChan
 		if ok {
-			panic(fmt.Errorf("async: %s", err))
+			panic(fmt.Errorf("async: %w", err))
 		}
 	}()
 	network, ok := ouroboros.NetworkByName(cfg.Network)
@@ -127,7 +127,7 @@ func submitTxNtN(txBytes []byte) error {
 	time.Sleep(2 * time.Second)
 
 	if err := oConn.Close(); err != nil {
-		return fmt.Errorf("failed to close connection: %s", err)
+		return fmt.Errorf("failed to close connection: %w", err)
 	}
 
 	return nil
@@ -149,14 +149,14 @@ func submitTxApi(txBytes []byte) error {
 		reqBody,
 	)
 	if err != nil {
-		return fmt.Errorf("failed to create request: %s", err)
+		return fmt.Errorf("failed to create request: %w", err)
 	}
 	req.Header.Add("Content-Type", "application/cbor")
 	client := &http.Client{Timeout: 5 * time.Minute}
 	resp, err := client.Do(req)
 	if err != nil {
 		return fmt.Errorf(
-			"failed to send request: %s: %s",
+			"failed to send request: %s: %w",
 			cfg.Submit.Url,
 			err,
 		)
@@ -170,7 +170,7 @@ func submitTxApi(txBytes []byte) error {
 	// We have to read the entire response body and close it to prevent a memory leak
 	respBody, err := io.ReadAll(resp.Body)
 	if err != nil {
-		return fmt.Errorf("failed to read response body: %s", err)
+		return fmt.Errorf("failed to read response body: %w", err)
 	}
 	defer resp.Body.Close()
 

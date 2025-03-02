@@ -79,7 +79,7 @@ func Load() (*Config, error) {
 	// vars that we hadn't explicitly specified in annotations above
 	err = envconfig.Process("dummy", globalConfig)
 	if err != nil {
-		return nil, fmt.Errorf("error processing environment: %s", err)
+		return nil, fmt.Errorf("error processing environment: %w", err)
 	}
 	return globalConfig, nil
 }
