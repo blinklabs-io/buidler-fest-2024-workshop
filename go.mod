@@ -7,7 +7,7 @@ require (
 	github.com/SundaeSwap-finance/kugo v1.1.0
 	github.com/blinklabs-io/adder v0.26.0
 	github.com/blinklabs-io/bursa v0.9.0
-	github.com/blinklabs-io/gouroboros v0.110.0
+	github.com/blinklabs-io/gouroboros v0.111.0
 	github.com/joho/godotenv v1.5.1
 	github.com/kelseyhightower/envconfig v1.4.0
 	github.com/spf13/cobra v1.9.1
@@ -32,7 +32,7 @@ require (
 	github.com/tyler-smith/go-bip39 v1.1.0 // indirect
 	github.com/utxorpc/go-codegen v0.16.0 // indirect
 	github.com/x448/float16 v0.8.4 // indirect
-	golang.org/x/crypto v0.33.0 // indirect
+	golang.org/x/crypto v0.35.0 // indirect
 	golang.org/x/exp v0.0.0-20240404231335-c0f41cb1a7a0 // indirect
 	golang.org/x/sync v0.11.0 // indirect
 	golang.org/x/sys v0.30.0 // indirect
