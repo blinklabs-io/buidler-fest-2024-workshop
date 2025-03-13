@@ -174,7 +174,7 @@ func submitTxApi(txBytes []byte) error {
 	}
 	defer resp.Body.Close()
 
-	if resp.StatusCode == 202 {
+	if resp.StatusCode == http.StatusAccepted {
 		return nil
 	} else {
 		return fmt.Errorf("failed to submit TX to API: %s: %d: %s", cfg.Submit.Url, resp.StatusCode, respBody)
