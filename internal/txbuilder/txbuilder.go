@@ -212,6 +212,9 @@ func getBlockfrostContext() (*BlockFrostChainContext.BlockFrostChainContext, err
 
 func getKupoClient() (*kugo.Client, error) {
 	cfg := config.GetConfig()
+	if cfg.TxBuilder.KupoUrl == "" {
+		return nil, errors.New("no kupo url provided")
+	}
 	k := kugo.New(
 		kugo.WithEndpoint(cfg.TxBuilder.KupoUrl),
 	)
