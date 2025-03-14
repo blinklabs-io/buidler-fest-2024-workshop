@@ -21,11 +21,6 @@ import (
 	"fmt"
 	"log/slog"
 
-	"github.com/SundaeSwap-finance/kugo"
-	"github.com/blinklabs-io/buidler-fest-2024-workshop/internal/config"
-	"github.com/blinklabs-io/buidler-fest-2024-workshop/internal/txsubmit"
-	"github.com/blinklabs-io/buidler-fest-2024-workshop/internal/wallet"
-
 	"github.com/Salvionied/apollo"
 	"github.com/Salvionied/apollo/constants"
 	serAddress "github.com/Salvionied/apollo/serialization/Address"
@@ -40,8 +35,12 @@ import (
 	"github.com/Salvionied/apollo/serialization/UTxO"
 	"github.com/Salvionied/apollo/serialization/Value"
 	"github.com/Salvionied/apollo/txBuilding/Backend/BlockFrostChainContext"
+	"github.com/SundaeSwap-finance/kugo"
 	"github.com/blinklabs-io/adder/event"
 	input_chainsync "github.com/blinklabs-io/adder/input/chainsync"
+	"github.com/blinklabs-io/buidler-fest-2024-workshop/internal/config"
+	"github.com/blinklabs-io/buidler-fest-2024-workshop/internal/txsubmit"
+	"github.com/blinklabs-io/buidler-fest-2024-workshop/internal/wallet"
 )
 
 func HandleEvent(evt event.Event) error {
@@ -213,6 +212,9 @@ func getBlockfrostContext() (*BlockFrostChainContext.BlockFrostChainContext, err
 
 func getKupoClient() (*kugo.Client, error) {
 	cfg := config.GetConfig()
+	if cfg.TxBuilder.KupoUrl == "" {
+		return nil, errors.New("no kupo url provided")
+	}
 	k := kugo.New(
 		kugo.WithEndpoint(cfg.TxBuilder.KupoUrl),
 	)

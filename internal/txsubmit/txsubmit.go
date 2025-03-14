@@ -30,11 +30,13 @@ import (
 	"github.com/blinklabs-io/gouroboros/protocol/txsubmission"
 )
 
-var ntnTxBytes []byte
-var ntnTxHash [32]byte
-var ntnTxType uint
-var ntnSentTx bool
-var ntnDoneChan chan any
+var (
+	ntnTxBytes  []byte
+	ntnTxHash   [32]byte
+	ntnTxType   uint
+	ntnSentTx   bool
+	ntnDoneChan chan any
+)
 
 func SubmitTx(txBytes []byte) error {
 	cfg := config.GetConfig()
