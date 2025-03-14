@@ -21,7 +21,6 @@ import (
 	"os"
 
 	"github.com/blinklabs-io/buidler-fest-2024-workshop/internal/config"
-
 	"github.com/blinklabs-io/bursa"
 )
 

@@ -22,7 +22,6 @@ import (
 	"github.com/blinklabs-io/buidler-fest-2024-workshop/internal/config"
 	"github.com/blinklabs-io/buidler-fest-2024-workshop/internal/indexer"
 	"github.com/blinklabs-io/buidler-fest-2024-workshop/internal/wallet"
-
 	"github.com/spf13/cobra"
 )
 
