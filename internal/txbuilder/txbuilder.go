@@ -54,7 +54,7 @@ func HandleEvent(evt event.Event) error {
 	eventCtx := evt.Context.(input_chainsync.TransactionContext)
 	// Determine source address from TX inputs
 	// NOTE: this assumes only 1 input
-	var inputAddr string = "(unknown)"
+	inputAddr := "(unknown)"
 	for _, txInput := range eventTx.Inputs {
 		utxo, err := getUtxoByRef(
 			txInput.Id().String(),
