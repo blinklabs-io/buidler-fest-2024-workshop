@@ -17,7 +17,6 @@ package txsubmit
 import (
 	"bytes"
 	"context"
-	"encoding/hex"
 	"fmt"
 	"io"
 	"net"
@@ -80,11 +79,7 @@ func submitTxNtN(txBytes []byte) error {
 	if err != nil {
 		return fmt.Errorf("failed to parse transaction CBOR: %w", err)
 	}
-	txHashHex, err := hex.DecodeString(tx.Hash())
-	if err != nil {
-		return fmt.Errorf("failed to decode TX hash: %w", err)
-	}
-	ntnTxHash = [32]byte(txHashHex)
+	ntnTxHash = [32]byte(tx.Hash())
 	ntnTxType = txType
 
 	// Create connection
