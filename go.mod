@@ -5,7 +5,7 @@ go 1.23.6
 toolchain go1.24.1
 
 require (
-	github.com/Salvionied/apollo v1.0.12
+	github.com/Salvionied/apollo v1.1.1
 	github.com/SundaeSwap-finance/kugo v1.1.0
 	github.com/blinklabs-io/adder v0.28.0
 	github.com/blinklabs-io/bursa v0.11.0
@@ -17,7 +17,6 @@ require (
 
 require (
 	filippo.io/edwards25519 v1.1.0 // indirect
-	github.com/Salvionied/cbor/v2 v2.6.0 // indirect
 	github.com/SundaeSwap-finance/ogmigo v0.9.0 // indirect
 	github.com/aws/aws-sdk-go v1.55.6 // indirect
 	github.com/btcsuite/btcd/btcutil v1.1.6 // indirect
@@ -29,7 +28,7 @@ require (
 	github.com/jinzhu/copier v0.4.0 // indirect
 	github.com/jmespath/go-jmespath v0.4.0 // indirect
 	github.com/kr/pretty v0.3.1 // indirect
-	github.com/maestro-org/go-sdk v1.1.3 // indirect
+	github.com/maestro-org/go-sdk v1.2.1 // indirect
 	github.com/spf13/pflag v1.0.6 // indirect
 	github.com/tyler-smith/go-bip39 v1.1.0 // indirect
 	github.com/utxorpc/go-codegen v0.16.0 // indirect
