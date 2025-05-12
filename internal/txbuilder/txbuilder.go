@@ -20,6 +20,7 @@ import (
 	"errors"
 	"fmt"
 	"log/slog"
+	"slices"
 
 	"github.com/Salvionied/apollo"
 	"github.com/Salvionied/apollo/constants"
@@ -183,7 +184,7 @@ func BuildRewardTx() (*Transaction.Transaction, error) {
 	vKeyBytes = vKeyBytes[2:]
 	sKeyBytes = sKeyBytes[2:]
 	// Strip out public key portion of extended private key
-	sKeyBytes = append(sKeyBytes[:64], sKeyBytes[96:]...)
+	sKeyBytes = slices.Delete(sKeyBytes, 64, 96)
 	vkey := Key.VerificationKey{Payload: vKeyBytes}
 	skey := Key.SigningKey{Payload: sKeyBytes}
 	tx, err = tx.SignWithSkey(vkey, skey)
