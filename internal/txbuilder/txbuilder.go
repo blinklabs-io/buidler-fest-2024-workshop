@@ -146,6 +146,7 @@ func HandleEvent(evt event.Event) error {
 }
 
 func BuildRewardTx() (*Transaction.Transaction, error) {
+	var err error
 	cfg := config.GetConfig()
 	w := wallet.GetWallet()
 	if w == nil {
@@ -153,9 +154,12 @@ func BuildRewardTx() (*Transaction.Transaction, error) {
 	}
 	cc := apollo.NewEmptyBackend()
 	apollob := apollo.New(&cc)
-	apollob = apollob.
+	apollob, err = apollob.
 		SetWalletFromBech32(w.PaymentAddress).
 		SetWalletAsChangeAddress()
+	if err != nil {
+		return nil, err
+	}
 
 	utxos, err := getUtxosByAddress(w.PaymentAddress)
 	if err != nil {
@@ -197,13 +201,17 @@ func BuildRewardTx() (*Transaction.Transaction, error) {
 func getBlockfrostContext() (*BlockFrostChainContext.BlockFrostChainContext, error) {
 	cfg := config.GetConfig()
 	var ret BlockFrostChainContext.BlockFrostChainContext
+	var err error
 	switch cfg.Network {
 	case "preprod":
-		ret = BlockFrostChainContext.NewBlockfrostChainContext(
+		ret, err = BlockFrostChainContext.NewBlockfrostChainContext(
 			constants.BLOCKFROST_BASE_URL_PREPROD,
 			int(constants.PREPROD),
 			cfg.TxBuilder.BlockfrostApiKey,
 		)
+		if err != nil {
+			return nil, err
+		}
 	// TODO: add more networks
 	default:
 		return nil, fmt.Errorf("unsupported network: %s", cfg.Network)
@@ -236,7 +244,10 @@ func getUtxosByAddress(addr string) ([]UTxO.UTxO, error) {
 		if err != nil {
 			return nil, err
 		}
-		utxos := bfc.Utxos(serAddr)
+		utxos, err := bfc.Utxos(serAddr)
+		if err != nil {
+			return nil, err
+		}
 		return utxos, nil
 	} else if cfg.TxBuilder.KupoUrl != "" {
 		k, err := getKupoClient()
@@ -267,7 +278,10 @@ func getUtxoByRef(txId string, idx int) (*UTxO.UTxO, error) {
 		if err != nil {
 			return nil, err
 		}
-		utxo := bfc.GetUtxoFromRef(txId, idx)
+		utxo, err := bfc.GetUtxoFromRef(txId, idx)
+		if err != nil {
+			return nil, err
+		}
 		return utxo, nil
 	} else if cfg.TxBuilder.KupoUrl != "" {
 		k, err := getKupoClient()
