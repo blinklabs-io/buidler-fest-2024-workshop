@@ -5,7 +5,7 @@ go 1.23.6
 toolchain go1.24.1
 
 require (
-	github.com/Salvionied/apollo v1.1.1
+	github.com/Salvionied/apollo v1.2.0
 	github.com/SundaeSwap-finance/kugo v1.3.0
 	github.com/blinklabs-io/adder v0.30.4
 	github.com/blinklabs-io/bursa v0.11.0
