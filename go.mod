@@ -8,7 +8,7 @@ require (
 	github.com/Salvionied/apollo v1.2.0
 	github.com/SundaeSwap-finance/kugo v1.3.0
 	github.com/blinklabs-io/adder v0.31.0
-	github.com/blinklabs-io/bursa v0.11.0
+	github.com/blinklabs-io/bursa v0.11.1
 	github.com/blinklabs-io/gouroboros v0.130.1
 	github.com/joho/godotenv v1.5.1
 	github.com/kelseyhightower/envconfig v1.4.0
