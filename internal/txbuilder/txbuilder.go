@@ -38,7 +38,6 @@ import (
 	"github.com/Salvionied/apollo/txBuilding/Backend/BlockFrostChainContext"
 	"github.com/SundaeSwap-finance/kugo"
 	"github.com/blinklabs-io/adder/event"
-	input_chainsync "github.com/blinklabs-io/adder/input/chainsync"
 	"github.com/blinklabs-io/buidler-fest-2024-workshop/internal/config"
 	"github.com/blinklabs-io/buidler-fest-2024-workshop/internal/txsubmit"
 	"github.com/blinklabs-io/buidler-fest-2024-workshop/internal/wallet"
@@ -51,8 +50,8 @@ func HandleEvent(evt event.Event) error {
 		slog.Error("failed to load wallet")
 		return errors.New("failed to load wallet")
 	}
-	eventTx := evt.Payload.(input_chainsync.TransactionEvent)
-	eventCtx := evt.Context.(input_chainsync.TransactionContext)
+	eventTx := evt.Payload.(event.TransactionEvent)
+	eventCtx := evt.Context.(event.TransactionContext)
 	// Determine source address from TX inputs
 	// NOTE: this assumes only 1 input
 	inputAddr := "(unknown)"
