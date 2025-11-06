@@ -38,10 +38,10 @@ type IndexerConfig struct {
 }
 
 type RewardConfig struct {
-	MinLovelace   uint64 `envconfig:"MIN_LOVELACE"`
 	RewardAddress string `envconfig:"REWARD_ADDRESS"`
-	RewardAmount  uint64 `envconfig:"REWARD_AMOUNT"`
 	SourceAddress string `envconfig:"SOURCE_ADDRESS"`
+	MinLovelace   uint64 `envconfig:"MIN_LOVELACE"`
+	RewardAmount  uint64 `envconfig:"REWARD_AMOUNT"`
 }
 
 type SubmitConfig struct {
