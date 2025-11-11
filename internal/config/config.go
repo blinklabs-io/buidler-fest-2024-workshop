@@ -24,12 +24,12 @@ import (
 )
 
 type Config struct {
-	Indexer   IndexerConfig
-	Reward    RewardConfig
 	Submit    SubmitConfig
+	Indexer   IndexerConfig
 	TxBuilder TxBuilderConfig
 	Wallet    WalletConfig
 	Network   string `envconfig:"NETWORK"`
+	Reward    RewardConfig
 }
 
 type IndexerConfig struct {
