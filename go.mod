@@ -5,7 +5,7 @@ go 1.24.0
 toolchain go1.24.1
 
 require (
-	github.com/Salvionied/apollo v1.3.0
+	github.com/Salvionied/apollo v1.4.0
 	github.com/SundaeSwap-finance/kugo v1.3.0
 	github.com/blinklabs-io/adder v0.33.0
 	github.com/blinklabs-io/bursa v0.11.1
@@ -41,7 +41,6 @@ require (
 	github.com/utxorpc/go-codegen v0.18.1 // indirect
 	github.com/x448/float16 v0.8.4 // indirect
 	golang.org/x/crypto v0.45.0 // indirect
-	golang.org/x/exp v0.0.0-20240404231335-c0f41cb1a7a0 // indirect
 	golang.org/x/sync v0.18.0 // indirect
 	golang.org/x/sys v0.38.0 // indirect
 	golang.org/x/text v0.31.0 // indirect
