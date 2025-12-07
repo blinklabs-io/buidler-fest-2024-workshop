@@ -7,7 +7,7 @@ toolchain go1.24.1
 require (
 	github.com/Salvionied/apollo v1.4.0
 	github.com/SundaeSwap-finance/kugo v1.3.0
-	github.com/blinklabs-io/adder v0.33.0
+	github.com/blinklabs-io/adder v0.34.0
 	github.com/blinklabs-io/bursa v0.11.1
 	github.com/blinklabs-io/gouroboros v0.140.0
 	github.com/joho/godotenv v1.5.1
