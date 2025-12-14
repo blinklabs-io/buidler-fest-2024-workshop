@@ -12,7 +12,7 @@ require (
 	github.com/blinklabs-io/gouroboros v0.142.0
 	github.com/joho/godotenv v1.5.1
 	github.com/kelseyhightower/envconfig v1.4.0
-	github.com/spf13/cobra v1.10.1
+	github.com/spf13/cobra v1.10.2
 )
 
 require (
