@@ -7,7 +7,7 @@ toolchain go1.24.1
 require (
 	github.com/Salvionied/apollo v1.5.0
 	github.com/SundaeSwap-finance/kugo v1.3.0
-	github.com/blinklabs-io/adder v0.35.0
+	github.com/blinklabs-io/adder v0.36.0
 	github.com/blinklabs-io/bursa v0.11.1
 	github.com/blinklabs-io/gouroboros v0.146.0
 	github.com/joho/godotenv v1.5.1
@@ -41,7 +41,7 @@ require (
 	github.com/klauspost/cpuid/v2 v2.3.0 // indirect
 	github.com/maestro-org/go-sdk v1.2.1 // indirect
 	github.com/minio/sha256-simd v1.0.1 // indirect
-	github.com/spf13/pflag v1.0.9 // indirect
+	github.com/spf13/pflag v1.0.10 // indirect
 	github.com/tyler-smith/go-bip39 v1.1.0 // indirect
 	github.com/utxorpc/go-codegen v0.18.1 // indirect
 	github.com/x448/float16 v0.8.4 // indirect
