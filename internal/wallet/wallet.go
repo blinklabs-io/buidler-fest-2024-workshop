@@ -16,7 +16,6 @@ package wallet
 
 import (
 	"errors"
-	"fmt"
 	"log/slog"
 	"os"
 
@@ -51,7 +50,7 @@ func Setup() (*bursa.Wallet, error) {
 				return nil, err
 			}
 			l, err := f.WriteString(mnemonic)
-			slog.Debug(fmt.Sprintf("wrote %d bytes to seed.txt", l))
+			slog.Debug("wrote bytes to seed.txt", "bytes", l) // #nosec G706
 			if err != nil {
 				f.Close()
 				return nil, err
