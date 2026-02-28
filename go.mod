@@ -7,21 +7,21 @@ toolchain go1.24.1
 require (
 	github.com/Salvionied/apollo v1.6.0
 	github.com/SundaeSwap-finance/kugo v1.3.0
-	github.com/blinklabs-io/adder v0.35.0
+	github.com/blinklabs-io/adder v0.38.0
 	github.com/blinklabs-io/bursa v0.11.1
-	github.com/blinklabs-io/gouroboros v0.146.0
+	github.com/blinklabs-io/gouroboros v0.157.0
 	github.com/joho/godotenv v1.5.1
 	github.com/kelseyhightower/envconfig v1.4.0
 	github.com/spf13/cobra v1.10.2
 )
 
 require (
-	filippo.io/edwards25519 v1.1.0 // indirect
+	filippo.io/edwards25519 v1.1.1 // indirect
 	github.com/ProjectZKM/Ziren/crates/go-runtime/zkvm_runtime v0.0.0-20251001021608-1fe7b43fc4d6 // indirect
 	github.com/SundaeSwap-finance/ogmigo/v6 v6.2.0 // indirect
 	github.com/aws/aws-sdk-go v1.55.6 // indirect
 	github.com/bits-and-blooms/bitset v1.20.0 // indirect
-	github.com/blinklabs-io/plutigo v0.0.18 // indirect
+	github.com/blinklabs-io/plutigo v0.0.25 // indirect
 	github.com/btcsuite/btcd/btcec/v2 v2.3.6 // indirect
 	github.com/btcsuite/btcd/btcutil v1.1.6 // indirect
 	github.com/btcsuite/btcd/chaincfg/chainhash v1.1.0 // indirect
@@ -41,14 +41,14 @@ require (
 	github.com/klauspost/cpuid/v2 v2.3.0 // indirect
 	github.com/maestro-org/go-sdk v1.2.1 // indirect
 	github.com/minio/sha256-simd v1.0.1 // indirect
-	github.com/spf13/pflag v1.0.9 // indirect
+	github.com/spf13/pflag v1.0.10 // indirect
 	github.com/tyler-smith/go-bip39 v1.1.0 // indirect
 	github.com/utxorpc/go-codegen v0.18.1 // indirect
 	github.com/x448/float16 v0.8.4 // indirect
-	golang.org/x/crypto v0.47.0 // indirect
+	golang.org/x/crypto v0.48.0 // indirect
 	golang.org/x/sync v0.19.0 // indirect
-	golang.org/x/sys v0.40.0 // indirect
-	golang.org/x/text v0.33.0 // indirect
+	golang.org/x/sys v0.41.0 // indirect
+	golang.org/x/text v0.34.0 // indirect
 	google.golang.org/protobuf v1.36.11 // indirect
 	gopkg.in/yaml.v2 v2.4.0 // indirect
 )
