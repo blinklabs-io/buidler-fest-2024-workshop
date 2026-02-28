@@ -150,7 +150,7 @@ func submitTxApi(txBytes []byte) error {
 	}
 	req.Header.Add("Content-Type", "application/cbor")
 	client := &http.Client{Timeout: 5 * time.Minute}
-	resp, err := client.Do(req)
+	resp, err := client.Do(req) // #nosec G704
 	if err != nil {
 		return fmt.Errorf(
 			"failed to send request: %s: %w",
@@ -165,11 +165,11 @@ func submitTxApi(txBytes []byte) error {
 		)
 	}
 	// We have to read the entire response body and close it to prevent a memory leak
+	defer resp.Body.Close()
 	respBody, err := io.ReadAll(resp.Body)
 	if err != nil {
 		return fmt.Errorf("failed to read response body: %w", err)
 	}
-	defer resp.Body.Close()
 
 	if resp.StatusCode == http.StatusAccepted {
 		return nil
