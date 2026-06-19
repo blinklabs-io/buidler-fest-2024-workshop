@@ -1,8 +1,8 @@
 module github.com/blinklabs-io/buidler-fest-2024-workshop
 
-go 1.24.0
+go 1.25.7
 
-toolchain go1.24.1
+toolchain go1.25.8
 
 require (
 	github.com/Salvionied/apollo v1.6.0
