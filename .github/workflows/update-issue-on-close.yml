@@ -31,7 +31,7 @@ jobs:
 
       # Update the "Closed Date" field on that project item
       - name: Update Closed Date field
-        uses: nipe0324/update-project-v2-item-field@c4af58452d1c5a788c1ea4f20e073fa722ec4a6b
+        uses: nipe0324/update-project-v2-item-field@c4af58452d1c5a788c1ea4f20e073fa722ec4a6b # v2.0.2
         with:
           project-url: ${{ env.PROJECT_URL }}
           github-token: ${{ secrets.ORG_PROJECT_PAT }}
