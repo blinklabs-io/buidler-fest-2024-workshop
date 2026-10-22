@@ -1,6 +1,6 @@
 module github.com/blinklabs-io/buidler-fest-2024-workshop
 
-go 1.25.7
+go 1.26.10
 
 toolchain go1.25.8
 
