@@ -2,8 +2,6 @@ module github.com/blinklabs-io/buidler-fest-2024-workshop
 
 go 1.26.10
 
-toolchain go1.25.8
-
 require (
 	github.com/Salvionied/apollo v1.6.0
 	github.com/SundaeSwap-finance/kugo v1.3.1
