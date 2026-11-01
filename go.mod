@@ -4,7 +4,7 @@ go 1.26.10
 
 require (
 	github.com/Salvionied/apollo v1.6.0
-	github.com/SundaeSwap-finance/kugo v1.3.1
+	github.com/SundaeSwap-finance/kugo v1.3.2
 	github.com/blinklabs-io/adder v0.46.0
 	github.com/blinklabs-io/bursa v0.20.0
 	github.com/blinklabs-io/gouroboros v0.213.7
