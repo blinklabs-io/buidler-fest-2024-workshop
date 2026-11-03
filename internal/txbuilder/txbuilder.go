@@ -20,6 +20,7 @@ import (
 	"errors"
 	"fmt"
 	"log/slog"
+	"math/big"
 	"slices"
 
 	"github.com/Salvionied/apollo"
@@ -86,7 +87,7 @@ func HandleEvent(evt event.Event) error {
 		break
 	}
 	// Add up amounts to our address
-	var totalOutputAmount uint64
+	totalOutputAmount := new(big.Int)
 	for _, txOutput := range eventTx.Outputs {
 		txOutAddr := txOutput.Address().String()
 		if txOutAddr == w.PaymentAddress ||
@@ -101,7 +102,7 @@ func HandleEvent(evt event.Event) error {
 				),
 			)
 			if txOutAddr == w.PaymentAddress {
-				totalOutputAmount += txOutput.Amount()
+				totalOutputAmount.Add(totalOutputAmount, txOutput.Amount())
 			}
 		}
 	}
@@ -116,7 +117,7 @@ func HandleEvent(evt event.Event) error {
 		return nil
 	}
 	// Skip further processing if transaction output amount is below the reward threshold
-	if totalOutputAmount < cfg.Reward.MinLovelace {
+	if totalOutputAmount.Cmp(new(big.Int).SetUint64(cfg.Reward.MinLovelace)) < 0 {
 		slog.Warn(
 			"skipping further processing: total output amount is below reward minimum",
 		)
