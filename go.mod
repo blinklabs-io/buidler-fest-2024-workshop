@@ -3,7 +3,7 @@ module github.com/blinklabs-io/buidler-fest-2024-workshop
 go 1.26.10
 
 require (
-	github.com/Salvionied/apollo v1.6.0
+	github.com/Salvionied/apollo v1.8.2
 	github.com/SundaeSwap-finance/kugo v1.3.2
 	github.com/blinklabs-io/adder v0.46.0
 	github.com/blinklabs-io/bursa v0.20.0
@@ -38,7 +38,6 @@ require (
 	github.com/maestro-org/go-sdk v1.2.1 // indirect
 	github.com/minio/sha256-simd v1.0.1 // indirect
 	github.com/spf13/pflag v1.0.10 // indirect
-	github.com/tyler-smith/go-bip39 v1.1.0 // indirect
 	github.com/utxorpc/go-codegen v0.19.2 // indirect
 	github.com/x448/float16 v0.8.4 // indirect
 	golang.org/x/crypto v0.58.0 // indirect

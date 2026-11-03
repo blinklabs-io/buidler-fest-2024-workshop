@@ -172,7 +172,7 @@ func BuildRewardTx() (*Transaction.Transaction, error) {
 			cfg.Reward.RewardAddress,
 			int(cfg.Reward.RewardAmount), // #nosec G115
 		)
-	tx, err := apollob.Complete()
+	tx, _, err := apollob.Complete()
 	if err != nil {
 		return nil, err
 	}
