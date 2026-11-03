@@ -6,8 +6,8 @@ require (
 	github.com/Salvionied/apollo v1.6.0
 	github.com/SundaeSwap-finance/kugo v1.3.2
 	github.com/blinklabs-io/adder v0.46.0
-	github.com/blinklabs-io/bursa v0.20.0
-	github.com/blinklabs-io/gouroboros v0.213.9
+	github.com/blinklabs-io/bursa v0.21.1
+	github.com/blinklabs-io/gouroboros v0.215.0
 	github.com/joho/godotenv v1.5.1
 	github.com/kelseyhightower/envconfig v1.4.0
 	github.com/spf13/cobra v1.10.2
@@ -18,7 +18,7 @@ require (
 	github.com/SundaeSwap-finance/ogmigo/v6 v6.2.1 // indirect
 	github.com/aws/aws-sdk-go v1.55.8 // indirect
 	github.com/bits-and-blooms/bitset v1.25.0 // indirect
-	github.com/blinklabs-io/go-bip39 v0.2.0 // indirect
+	github.com/blinklabs-io/go-bip39 v0.2.1 // indirect
 	github.com/blinklabs-io/plutigo v0.9.7 // indirect
 	github.com/btcsuite/btcd/btcec/v2 v2.5.0 // indirect
 	github.com/btcsuite/btcd/btcutil v1.2.0 // indirect
