@@ -117,7 +117,9 @@ func HandleEvent(evt event.Event) error {
 		return nil
 	}
 	// Skip further processing if transaction output amount is below the reward threshold
-	if totalOutputAmount.Cmp(new(big.Int).SetUint64(cfg.Reward.MinLovelace)) < 0 {
+	if totalOutputAmount.Cmp(
+		new(big.Int).SetUint64(cfg.Reward.MinLovelace),
+	) < 0 {
 		slog.Warn(
 			"skipping further processing: total output amount is below reward minimum",
 		)
